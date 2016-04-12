@@ -8,11 +8,12 @@
  * Controller of the streamItApp
  */
 angular.module('streamItApp')
-  .controller('MainCtrl', function ($scope, Tracks) {
+  .controller('MainCtrl', function ($scope, Tracks, $sce) {
 
     $scope.tracksPerPage = 13;
     $scope.skip = 0;
 
+    $scope.trustSrc = trustSrc;
     $scope.getPreviousTracks = getPreviousTracks;
     $scope.getNextTracks = getNextTracks;
 
@@ -37,6 +38,10 @@ angular.module('streamItApp')
       }, function() {
         console.log($scope.tracsk)
       });
+    }
+
+    function trustSrc(src) {
+      return $sce.trustAsResourceUrl(src);
     }
 
   });

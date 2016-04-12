@@ -1,33 +1,15 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>Stream It!</h1>
   <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+    <img src="images/music-streams.jpg" alt="Stream It banner"><br>
+    All your music, a button click away
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
 </div>
-
-<!-- <div class="row marketing">
-  <ul class="media-list">
-    <li class="media" ng-repeat="track in tracks">
-      <div class="media-left">
-        <a ng-href="#/track/{{ track._id }}">
-          <img class="media-object" ng-src="{{ track.image }}" alt="{{ track.title }}">
-        </a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading"> {{ track.title }} </h4>
-        ...
-      </div>
-    </li>
-  </ul>
-</div> -->
 
 <div class="row">
   <nav>
     <ul class="pager">
       <li><a href="" ng-click="getPreviousTracks()">Previous</a></li>
-      <li><a href="">{{ skip }}</a></li>
       <li><a href="" ng-click="getNextTracks()">Next</a></li>
     </ul>
   </nav>
@@ -45,7 +27,21 @@
    </div>
    <div class="col-sm-8">
      <div class="media-body">
-       <h4 class="media-heading"> {{ track.title }} </h4>
+      <h4 class="media-heading"> {{ track.title }} </h4>
+      <p>
+        {{ track.artistes }}
+      </p>
+      <p>
+        {{ track.createdAt | date }}
+      </p>
+      <p>
+        <span class="label label-default">{{ track.category }}</span>
+      </p>
+       <audio controls>
+         <source ng-src="{{ trustSrc(track.mp3Url) }}" type="audio/mpeg">
+         Your browser does not support the features required to play music from this site.
+         Please use a different browser to enjoy the full StreamIt experience.
+       </audio>
      </div>
    </div>
   </div> 
@@ -56,7 +52,6 @@
   <nav>
     <ul class="pager">
       <li><a href="" ng-click="getPreviousTracks()">Previous</a></li>
-      <li><a href="">{{ skip }}</a></li>
       <li><a href="" ng-click="getNextTracks()">Next</a></li>
     </ul>
   </nav>
